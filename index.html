@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Report Card Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard-container" id="reportCard">
+        
+        <!-- ACTION BUTTONS -->
+        <div class="action-buttons">
+            <button onclick="window.print()">🖨️ Print / Save as PDF</button>
+            <button onclick="saveData()">💾 Save Current Student</button>
+            <button onclick="createNewStudent()">➕ New Student</button>
+            <button onclick="bulkAddStudents()">📥 Bulk Add Students</button>
+            <button onclick="deleteStudent()" class="danger-btn">🗑️ Delete Student</button>
+            <button onclick="clearForm()" class="clear-btn">🧹 Clear Form</button>
+        </div>
+
+        <!-- STUDENT REPOSITORY PANEL -->
+        <div class="student-panel">
+            <div class="student-selector">
+                <label for="studentList">Quick Select:</label>
+                <select id="studentList" onchange="loadSelectedStudent()">
+                    <option value="">-- No students yet --</option>
+                </select>
+            </div>
+            <div class="student-list" id="studentLinks"></div>
+        </div>
+
+        <!-- HEADER -->
+        <header class="report-header">
+            <div class="logos">
+                <img src="deped-logo.png" alt="DepEd Logo" class="logo" width="80">
+            </div>
+            <div class="header-text">
+                <p>Republic of the Philippines</p>
+                <p>Department of Education</p>
+                <p>Schools Division Office of Zambales</p>
+                <p>Locloc, Palauig, Zambales</p>
+                <h2>LOCLOC NATIONAL HIGH SCHOOL</h2>
+            </div>
+            <div class="logos">
+                <img src="school-logo.jpg" alt="School Logo" class="logo" width="80">
+            </div>
+        </header>
+
+        <!-- STUDENT INFO -->
+        <section class="student-info">
+            <div class="info-group">
+                <label>Name:</label>
+                <input type="text" id="studentName" placeholder="Enter student name">
+            </div>
+            <div class="info-group">
+                <label>Grade & Section:</label>
+                <input type="text" id="gradeSection" placeholder="e.g., 7-SSES">
+            </div>
+            <div class="info-group">
+                <label>Term:</label>
+                <input type="text" id="term" placeholder="e.g., 1">
+            </div>
+            <div class="info-group">
+                <label>Subject:</label>
+                <input type="text" id="subject" placeholder="e.g., Environmental Science">
+            </div>
+            <div class="info-group">
+                <label>Teacher:</label>
+                <input type="text" id="teacher" placeholder="Enter teacher name">
+            </div>
+            <div class="info-group">
+                <label>S.Y.:</label>
+                <input type="text" id="schoolYear" placeholder="e.g., 2026-2027">
+            </div>
+        </section>
+
+        <!-- WRITTEN WORKS -->
+        <section class="assessment-section">
+            <div class="section-header ww-header">WRITTEN / ORAL WORKS (WWs) 20%</div>
+            <table class="score-table">
+                <thead>
+                    <tr class="domain-row">
+                        <th></th>
+                        <th colspan="5" class="domain-cognitive">COGNITIVE DOMAIN</th>
+                        <th colspan="3" class="domain-affective">AFFECTIVE DOMAIN</th>
+                    </tr>
+                    <tr class="number-row">
+                        <th></th>
+                        <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+                        <th>1</th><th>2</th><th>3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="label">Highest Possible Score</td>
+                        <td contenteditable="true">10</td>
+                        <td contenteditable="true">10</td>
+                        <td contenteditable="true">10</td>
+                        <td contenteditable="true">10</td>
+                        <td contenteditable="true">10</td>
+                        <td contenteditable="true">10</td>
+                        <td contenteditable="true">10</td>
+                        <td contenteditable="true">10</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Learner's Score</td>
+                        <td contenteditable="true"> </td>
+                        <td contenteditable="true"> </td>
+                        <td contenteditable="true"> </td>
+                        <td contenteditable="true"> </td>
+                        <td contenteditable="true"> </td>
+                        <td contenteditable="true"> </td>
+                        <td contenteditable="true"> </td>
+                        <td contenteditable="true"> </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="percentage-display">WW Percentage: <span id="ww-percentage">0%</span></div>
+        </section>
+
+        <!-- PERFORMANCE TASKS -->
+        <section class="assessment-section">
+            <div class="section-header pt-header">PRODUCT / PERFORMANCE TASKS (PTs) 50%</div>
+            <table class="score-table">
+                <thead>
+                    <tr class="domain-row">
+                        <th></th>
+                        <th colspan="3" class="domain-cognitive">COGNITIVE DOMAIN</th>
+                        <th colspan="3" class="domain-affective">AFFECTIVE DOMAIN</th>
+                        <th colspan="3" class="domain-behavioral">BEHAVIORAL DOMAIN</th>
+                    </tr>
+                    <tr class="number-row">
+                        <th></th>
+                        <th>1</th><th>2</th><th>3</th>
+                        <th>1</th><th>2</th><th>3</th>
+                        <th>1</th><th>2</th><th>3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="label">Highest Possible Score</td>
+                        <td contenteditable="true">100</td>
+                        <td contenteditable="true">100</td>
+                        <td contenteditable="true">100</td>
+                        <td contenteditable="true">100</td>
+                        <td contenteditable="true">100</td>
+                        <td contenteditable="true">100</td>
+                        <td contenteditable="true">100</td>
+                        <td contenteditable="true">100</td>
+                        <td contenteditable="true">100</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Learner's Score</td>
+                        <td contenteditable="true"> </td>
+                        <td contenteditable="true"> </td>
+                        <td contenteditable="true"> </td>
+                        <td contenteditable="true"> </td>
+                        <td contenteditable="true"> </td>
+                        <td contenteditable="true"> </td>
+                        <td contenteditable="true"> </td>
+                        <td contenteditable="true"> </td>
+                        <td contenteditable="true"> </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="percentage-display">PT Percentage: <span id="pt-percentage">0%</span></div>
+        </section>
+
+        <!-- EXAMINATIONS -->
+        <section class="assessment-section">
+            <div class="section-header ex-header">EXAMINATIONS (EXs) 30%</div>
+            <table class="score-table">
+                <thead>
+                    <tr class="number-row">
+                        <th></th>
+                        <th>ST1</th>
+                        <th>ST2</th>
+                        <th>TE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="label">Highest Possible Score</td>
+                        <td contenteditable="true">25</td>
+                        <td contenteditable="true">25</td>
+                        <td contenteditable="true">50</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Learner's Score</td>
+                        <td contenteditable="true"> </td>
+                        <td contenteditable="true"> </td>
+                        <td contenteditable="true"> </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="percentage-display">EX Percentage: <span id="ex-percentage">0%</span></div>
+        </section>
+
+        <!-- FINAL GRADE -->
+        <div class="final-grade-box">
+            <h3>Final Grade: <span id="final-grade">0</span></h3>
+        </div>
+
+        <!-- COMMENTS -->
+        <section class="comments-section">
+            <div class="comment-box">
+                <label>Teacher's comments/remarks</label>
+                <textarea rows="2" id="teacherComment" placeholder=" "></textarea>
+            </div>
+            <div class="comment-box">
+                <label>Parent's/Guardian comments/remarks</label>
+                <textarea rows="2" id="parentComment" placeholder=" "></textarea>
+            </div>
+        </section>
+
+        <!-- SIGNATURE SECTION -->
+        <section class="signature-section">
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                <p>Signature Over Printed Name of Teacher</p>
+            </div>
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                <p>Signature Over Printed Name of Parent</p>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

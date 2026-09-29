@@ -1,0 +1,208 @@
+/* Reset */
+* { box-sizing: border-box; font-family: Arial, sans-serif; }
+
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.dashboard-container {
+    background-color: white;
+    width: 100%;
+    max-width: 1000px;
+    border: 2px solid #333;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex; gap: 10px; margin-bottom: 20px;
+    justify-content: flex-end; flex-wrap: wrap;
+}
+
+.action-buttons button {
+    background-color: #1976D2; color: white; border: none;
+    padding: 10px 15px; border-radius: 5px; cursor: pointer;
+    font-weight: bold; font-size: 13px;
+}
+
+.action-buttons button:hover { background-color: #115293; }
+.danger-btn { background-color: #D32F2F !important; }
+.danger-btn:hover { background-color: #9a0007 !important; }
+.clear-btn { background-color: #F57C00 !important; }
+.clear-btn:hover { background-color: #E65100 !important; }
+
+/* Student Repository Panel */
+.student-panel {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-left: 5px solid #1976D2;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 25px;
+}
+
+.student-selector {
+    display: flex; align-items: center; gap: 10px;
+}
+
+.student-selector label { font-weight: bold; font-size: 14px; }
+
+.student-selector select {
+    flex-grow: 1; padding: 8px; font-size: 14px;
+    border: 1px solid #ccc; border-radius: 4px;
+    background-color: white; cursor: pointer;
+}
+
+.student-list {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #ccc;
+    display: flex; flex-wrap: wrap; gap: 8px;
+}
+
+.student-link {
+    display: inline-block; padding: 6px 12px;
+    background-color: white; border: 1px solid #1976D2;
+    color: #1976D2; border-radius: 20px;
+    text-decoration: none; font-size: 13px;
+    font-weight: bold; cursor: pointer;
+    transition: all 0.2s;
+}
+
+.student-link:hover { background-color: #1976D2; color: white; }
+.student-link.active {
+    background-color: #1976D2; color: white;
+    box-shadow: 0 2px 5px rgba(25, 118, 210, 0.4);
+}
+
+/* Header */
+.report-header {
+    display: flex; justify-content: space-between;
+    align-items: center; text-align: center; margin-bottom: 20px;
+}
+
+.logo { width: 80px; height: 80px; object-fit: contain; }
+.header-text p { margin: 2px 0; font-size: 14px; }
+.header-text h2 { margin: 5px 0 0 0; font-size: 18px; }
+
+/* Student Info */
+.student-info {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 10px; margin-bottom: 20px;
+    border-bottom: 2px solid #333; padding-bottom: 15px;
+}
+
+.info-group { display: flex; flex-direction: column; }
+.info-group label { font-weight: bold; font-size: 12px; margin-bottom: 3px; }
+.info-group input {
+    border: none; border-bottom: 1px solid #333;
+    font-size: 14px; padding: 3px; outline: none;
+}
+
+/* Assessment Tables */
+.assessment-section { margin-bottom: 15px; }
+
+.section-header {
+    color: white; text-align: center; font-weight: bold;
+    padding: 5px; font-size: 14px;
+}
+
+.ww-header { background-color: #D32F2F; }
+.pt-header { background-color: #F57C00; }
+.ex-header { background-color: #1976D2; }
+
+.score-table {
+    width: 100%; border-collapse: collapse; margin-top: 2px;
+}
+
+.score-table th, .score-table td {
+    border: 1px solid #ccc; text-align: center;
+    padding: 5px; font-size: 13px;
+}
+
+.domain-row th {
+    background-color: #f0f0f0; font-size: 11px; padding: 4px 3px;
+}
+
+.domain-cognitive { background-color: #ffe6e6 !important; color: #b00; }
+.domain-affective { background-color: #fff4e6 !important; color: #b35900; }
+.domain-behavioral { background-color: #e6f4ff !important; color: #004d99; }
+
+.number-row th { background-color: #f9f9f9; font-weight: normal; }
+
+.score-table .label {
+    text-align: left; font-weight: bold;
+    background-color: #f9f9f9; width: 180px;
+}
+
+.score-table td[contenteditable="true"]:focus {
+    background-color: #e3f2fd; outline: 2px solid #1976D2;
+}
+
+.percentage-display {
+    text-align: right; font-size: 13px; font-weight: bold;
+    margin-top: 5px; color: #555;
+}
+
+/* Final Grade */
+.final-grade-box {
+    text-align: right; margin-top: 15px; padding: 10px;
+    background-color: #e8f5e9; border: 1px solid #4caf50;
+    border-radius: 5px;
+}
+
+.final-grade-box h3 { margin: 0; color: #2e7d32; }
+
+/* Comments */
+.comments-section {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 20px; margin-top: 20px;
+    border-top: 2px solid #333; padding-top: 15px;
+}
+
+.comment-box { display: flex; flex-direction: column; }
+.comment-box label { font-weight: bold; font-size: 12px; margin-bottom: 5px; }
+.comment-box textarea {
+    resize: vertical; padding: 5px; font-size: 13px;
+    border: 1px solid #ccc; border-radius: 4px;
+}
+
+/* Signatures */
+.signature-section {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 40px; margin-top: 50px; padding: 0 20px;
+}
+
+.signature-box {
+    display: flex; flex-direction: column;
+    align-items: center; text-align: center;
+}
+
+.signature-line {
+    width: 80%; border-top: 1px solid #333; margin-bottom: 5px;
+}
+
+.signature-box p {
+    font-size: 12px; font-weight: bold; margin: 0; color: #333;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .student-info { grid-template-columns: 1fr; }
+    .comments-section { grid-template-columns: 1fr; }
+    .report-header { flex-direction: column; }
+    .header-text { margin: 10px 0; }
+    .signature-section { grid-template-columns: 1fr; gap: 30px; }
+}
+
+/* Print */
+@media print {
+    .action-buttons, .student-panel { display: none !important; }
+    body { background-color: white; padding: 0; }
+    .dashboard-container { border: none; box-shadow: none; max-width: 100%; padding: 0; }
+    .score-table { font-size: 11px; }
+}
